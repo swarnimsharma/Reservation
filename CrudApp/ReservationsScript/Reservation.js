@@ -58,10 +58,12 @@
             // data: obj,
             success: function (data) {
                 debugger;
+                var startDate = new Date(parseInt(data.StartDate.substr(6)));
+                var endDate = new Date(parseInt(data.EndDate.substr(6)));
                 $('#txtTable').val(data.Total_Table_Number);
                 $('#txtPerson').val(data.Total_Person);
-                $('#txtCheckIn').val(data.StartDate);
-                $('#txtCheckOut').val(data.EndDate);
+                $('#txtCheckIn').val(startDate);
+                $('#txtCheckOut').val(endDate);
                 $('#txtLocation').val(data.Locations);
                 $('#hidden_course_id').val(data.Id);
                 $('#myModal').modal('show');
