@@ -13,10 +13,10 @@ namespace CrudApp
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ReservationEntities : DbContext
+    public partial class ReservationEntities2 : DbContext
     {
-        public ReservationEntities()
-            : base("name=ReservationEntities")
+        public ReservationEntities2()
+            : base("name=ReservationEntities2")
         {
         }
     

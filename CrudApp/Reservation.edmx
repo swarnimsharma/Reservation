@@ -5,35 +5,19 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="ReservationModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Reservation.dbo.ReservationForTable' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="ReservationForTable">
           <Key>
             <PropertyRef Name="Id" />
-            <PropertyRef Name="StartDate" />
-            <PropertyRef Name="EndDate" />
-            <PropertyRef Name="Total-Table-Number" />
-            <PropertyRef Name="Total-Person" />
-            <PropertyRef Name="Booking-Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="StartDate" Type="datetime" Nullable="false" />
           <Property Name="EndDate" Type="datetime" Nullable="false" />
           <Property Name="Total-Table-Number" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Total-Person" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Booking-Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Locations" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityContainer Name="ReservationModelStoreContainer">
-          <EntitySet Name="ReservationForTable" EntityType="Self.ReservationForTable" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [ReservationForTable].[Id] AS [Id], 
-    [ReservationForTable].[StartDate] AS [StartDate], 
-    [ReservationForTable].[EndDate] AS [EndDate], 
-    [ReservationForTable].[Total-Table-Number] AS [Total-Table-Number], 
-    [ReservationForTable].[Total-Person] AS [Total-Person], 
-    [ReservationForTable].[Booking-Id] AS [Booking-Id]
-    FROM [dbo].[ReservationForTable] AS [ReservationForTable]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="ReservationForTable" EntityType="Self.ReservationForTable" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
@@ -43,20 +27,15 @@ warning 6002: The table/view 'Reservation.dbo.ReservationForTable' does not have
         <EntityType Name="ReservationForTable">
           <Key>
             <PropertyRef Name="Id" />
-            <PropertyRef Name="StartDate" />
-            <PropertyRef Name="EndDate" />
-            <PropertyRef Name="Total_Table_Number" />
-            <PropertyRef Name="Total_Person" />
-            <PropertyRef Name="Booking_Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Total_Table_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Total_Person" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Booking_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Locations" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityContainer Name="ReservationEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="ReservationEntities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="ReservationForTables" EntityType="Self.ReservationForTable" />
         </EntityContainer>
       </Schema>
@@ -64,7 +43,7 @@ warning 6002: The table/view 'Reservation.dbo.ReservationForTable' does not have
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ReservationModelStoreContainer" CdmEntityContainer="ReservationEntities">
+        <EntityContainerMapping StorageEntityContainer="ReservationModelStoreContainer" CdmEntityContainer="ReservationEntities2">
           <EntitySetMapping Name="ReservationForTables">
             <EntityTypeMapping TypeName="ReservationModel.ReservationForTable">
               <MappingFragment StoreEntitySet="ReservationForTable">
@@ -73,7 +52,7 @@ warning 6002: The table/view 'Reservation.dbo.ReservationForTable' does not have
                 <ScalarProperty Name="EndDate" ColumnName="EndDate" />
                 <ScalarProperty Name="Total_Table_Number" ColumnName="Total-Table-Number" />
                 <ScalarProperty Name="Total_Person" ColumnName="Total-Person" />
-                <ScalarProperty Name="Booking_Id" ColumnName="Booking-Id" />
+                <ScalarProperty Name="Locations" ColumnName="Locations" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

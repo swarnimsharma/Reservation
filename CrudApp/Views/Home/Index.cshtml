@@ -17,53 +17,53 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Create</h4>
+                <h4 class="modal-title" id="myModalLabel">Reserve Table</h4>
                 @*<h4 class="modal-title" id="myModalLabel">Create</h4>*@
             </div>
             <div class="modal-body">
                 <form id="cities-form" action="#" method="post">
-                    <label class="control-label col-md-2">Name</label>
+                    <label class="control-label col-md-2">Table</label>
                     <div class="col-md-10">
-                        <input type="text" class="form-control" id="txtName" />
+                        <input type="text" class="form-control" id="txtTable" />
                         <span id="spnName" class="text-danger"></span>
                         <input type="hidden" class="form-control" id="hdId" />
                         <span class="text-danger" id="spnTeamName"></span>
                     </div>
                     <br>
-                    <label class="control-label col-md-2">Description</label>
+                    <label class="control-label col-md-2">Totalperson</label>
                     <div class="col-md-10">
-                        <input type="text" class="form-control" id="txtDescription" />
+                        <input type="text" class="form-control" id="txtPerson" />
                         <span id="spnDescription" class="text-danger"></span>
                         <span class="text-danger" id="spnCity"></span>
                     </div>
                     <br>
-
-                    <label class="control-label col-md-2">FullPrice</label>
+                    <label class="control-label col-md-2">Check In</label>
                     <div class="col-md-10">
-                        <input type="text" class="form-control" id="txtFullPrice" />
+                        <input type="text" class="form-control" id="txtCheckIn" />
                         <span id="spnFullPrice" class="text-danger"></span>
                         <span class="text-danger" id="spnCity"></span>
                     </div>
                     <br>
-
-                    <label class="control-label col-md-2">Level</label>
+                    <label class="control-label col-md-2">CheckOut</label>
                     <div class="col-md-10">
-                        <input type="text" class="form-control" id="txtLevel" />
+                        <input type="text" class="form-control" id="txtCheckOut" />
                         <span id="spnLevel" class="text-danger"></span>
                         <span class="text-danger" id="spnCity"></span>
                     </div>
                     <br>
-                    <label class="control-label col-md-2">AuthorId</label>
+                    <label class="control-label col-md-2">Location</label>
                     <div class="col-md-10">
-                        <input type="text" class="form-control" id="txtAuthorId" />
+                        <input type="text" class="form-control" id="txtLocation" />
+                        <span id="spnLevel" class="text-danger"></span>
                         <span class="text-danger" id="spnCity"></span>
                     </div>
+                    <br>
+                    <br>
                 </form>
             </div>
             <div class="modal-footer">
                 <span class="error"></span>
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                <button id="sub" type="button" class="btn btn-info" onclick="Reservations.Save()">Reserve Table</button>
+                <button id="sub" type="button" class="btn btn-info" onclick="Reservations.SaveReservation()">AcceptReservation</button>
             </div>
         </div>
     </div>

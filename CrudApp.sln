@@ -3,11 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29609.76
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrudApp", "CrudApp\CrudApp.csproj", "{40B85622-FCDE-4BE9-BC60-C1477D170745}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReserveTable", "CrudApp\ReserveTable.csproj", "{40B85622-FCDE-4BE9-BC60-C1477D170745}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{95B07D38-AE4A-4AC3-B592-2EE1EFDA807F}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		TextFile1.txt = TextFile1.txt
 	EndProjectSection
 EndProject
 Global

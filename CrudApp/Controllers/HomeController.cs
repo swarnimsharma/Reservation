@@ -20,7 +20,7 @@ namespace CrudApp.Controllers
 
         public PartialViewResult _GetReservationList()
         {
-            using (ReservationEntities dbmodel = new ReservationEntities())
+            using (ReservationEntities2 dbmodel = new ReservationEntities2())
             {
                 try
                 {
@@ -35,18 +35,19 @@ namespace CrudApp.Controllers
             }
         }
 
-        // GET: Home/Details/5
+
         [HttpGet]
         public JsonResult GetReservationDetails(int id)
         {
-            using (ReservationEntities dbmodel = new ReservationEntities())
+            using (ReservationEntities2 dbmodel = new ReservationEntities2())
             {
                 var data = dbmodel.ReservationForTables.Where(x => x.Id == id).Select(x => new
                 {
                     x.Total_Person,
                     x.Total_Table_Number,
                     x.StartDate,
-                    x.EndDate
+                    x.EndDate,
+                    x.Locations
                 }).FirstOrDefault();
                 return Json(data, JsonRequestBehavior.AllowGet);
             }
@@ -57,8 +58,8 @@ namespace CrudApp.Controllers
         {
             try
             {
-                // TODO: Add insert logic here
-                using (ReservationEntities dbmodel = new ReservationEntities())
+
+                using (ReservationEntities2 dbmodel = new ReservationEntities2())
                 {
                     dbmodel.ReservationForTables.Add(reservation);
                     dbmodel.SaveChanges();
@@ -89,24 +90,23 @@ namespace CrudApp.Controllers
             }
         }
 
-        // GET: Home/Edit/5
+
         public ActionResult EditReservedTable(int id)
         {
-            using (ReservationEntities dbmodel = new ReservationEntities())
-
+            using (ReservationEntities2 dbmodel = new ReservationEntities2())
                 return View(dbmodel.ReservationForTables.Where(x => x.Id == id).FirstOrDefault());
         }
 
-        // POST: Home/Edit/5
+
         [HttpPost]
-        public ActionResult EditReservedTable(int id, ReservationForTable courses)
+        public ActionResult EditReservedTable(int id, ReservationForTable reservation)
         {
             try
             {
-                // TODO: Add update logic here
-                using (ReservationEntities dbmodel = new ReservationEntities())
+
+                using (ReservationEntities2 dbmodel = new ReservationEntities2())
                 {
-                    dbmodel.Entry(courses).State = EntityState.Modified;
+                    dbmodel.Entry(reservation).State = EntityState.Modified;
                     dbmodel.SaveChanges();
                 }
 
