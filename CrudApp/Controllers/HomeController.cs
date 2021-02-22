@@ -20,7 +20,7 @@ namespace CrudApp.Controllers
 
         public PartialViewResult _GetReservationList()
         {
-            using (ReservationEntities2 dbmodel = new ReservationEntities2())
+            using (ReservationEntities dbmodel = new ReservationEntities())
             {
                 try
                 {
@@ -39,7 +39,7 @@ namespace CrudApp.Controllers
         [HttpGet]
         public JsonResult GetReservationDetails(int id)
         {
-            using (ReservationEntities2 dbmodel = new ReservationEntities2())
+            using (ReservationEntities dbmodel = new ReservationEntities())
             {
                 var data = dbmodel.ReservationForTables.Where(x => x.Id == id).Select(x => new
                 {
@@ -59,7 +59,7 @@ namespace CrudApp.Controllers
             try
             {
 
-                using (ReservationEntities2 dbmodel = new ReservationEntities2())
+                using (ReservationEntities dbmodel = new ReservationEntities())
                 {
                     dbmodel.ReservationForTables.Add(reservation);
                     dbmodel.SaveChanges();
@@ -93,7 +93,7 @@ namespace CrudApp.Controllers
 
         public ActionResult EditReservedTable(int id)
         {
-            using (ReservationEntities2 dbmodel = new ReservationEntities2())
+            using (ReservationEntities dbmodel = new ReservationEntities())
                 return View(dbmodel.ReservationForTables.Where(x => x.Id == id).FirstOrDefault());
         }
 
@@ -104,7 +104,7 @@ namespace CrudApp.Controllers
             try
             {
 
-                using (ReservationEntities2 dbmodel = new ReservationEntities2())
+                using (ReservationEntities dbmodel = new ReservationEntities())
                 {
                     dbmodel.Entry(reservation).State = EntityState.Modified;
                     dbmodel.SaveChanges();

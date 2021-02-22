@@ -12,19 +12,19 @@ namespace CrudApp
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
-    public partial class ReservationEntities2 : DbContext
+
+    public partial class ReservationEntities : DbContext
     {
-        public ReservationEntities2()
+        public ReservationEntities()
             : base("name=ReservationEntities2")
         {
         }
-    
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
-    
+
         public virtual DbSet<ReservationForTable> ReservationForTables { get; set; }
     }
 }
