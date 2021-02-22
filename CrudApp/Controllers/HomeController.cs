@@ -24,7 +24,7 @@ namespace CrudApp.Controllers
             {
                 try
                 {
-                    Log.Info("Hi I am log4net Info Level");
+                    Log.Info("Hi I am log4net Info Level"); //We can add log message here Accordingly..
                 }
                 catch (Exception ex)
                 {
