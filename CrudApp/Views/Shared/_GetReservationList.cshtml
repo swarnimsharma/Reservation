@@ -1,0 +1,56 @@
+﻿@model IEnumerable<CrudApp.ReservationForTable>
+<div id="mainDiv">
+    <p>
+        @*@Html.ActionLink("Create New", "Create")*@
+        <input type="button" class="btn btn-success" value="Create New" id="submit" onclick="Reservations.OpenPopUp()">
+    </p>
+    <div class="feedback">
+
+    </div>
+
+    @* Hidden fields *@
+
+    <input type="hidden" id="hidden_course_id" />
+
+    <table class="table" id="ReservationsTable">
+        <tr>
+            <th>
+                <label>Number of Table Available</label>
+            </th>
+            <th>
+                <label>StartDate</label>
+            </th>
+            <th>
+                <label>EndDate</label>
+            </th>
+
+            <th></th>
+        </tr>
+
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Total_Table_Number)
+                    @Html.ValidationMessageFor(modelItem => item.Total_Table_Number)<br />
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndDate)
+                </td>
+
+                <td>
+                    <button class="btn btn-info" id="m" type="button" onclick="Reservations.OpenEditModal(@item.Id)">ModifyReservartion</button>
+                    <button class="btn btn-info" type="button" onclick="Reservations.OpenDetailsModal(@item.Id)">ReservationDetails</button>
+
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</div>

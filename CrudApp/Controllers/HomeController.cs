@@ -1,12 +1,10 @@
-﻿using System.Linq;
-using System.Web.Mvc;
-using CrudApp.Models;
-using System.Data.Entity;
-using log4net;
+﻿using log4net;
 using System;
+using System.Data.Entity;
 using System.Data.Entity.Validation;
+using System.Linq;
 using System.Text;
-using System.Web;
+using System.Web.Mvc;
 
 namespace CrudApp.Controllers
 {
@@ -20,9 +18,9 @@ namespace CrudApp.Controllers
             return View();
         }
 
-        public PartialViewResult _Courses()
+        public PartialViewResult _GetReservationList()
         {
-            using (Pluto_AspNetMvcEntities dbmodel = new Pluto_AspNetMvcEntities())
+            using (ReservationEntities dbmodel = new ReservationEntities())
             {
                 try
                 {
@@ -32,38 +30,37 @@ namespace CrudApp.Controllers
                 {
                     Log.Error("Error in Home Controller/Index", ex);
                 }
-                return PartialView(dbmodel.Courses.ToList());
+                var a = dbmodel.ReservationForTables.ToList();
+                return PartialView(dbmodel.ReservationForTables.ToList());
             }
         }
 
         // GET: Home/Details/5
         [HttpGet]
-        public JsonResult Details(int id)
+        public JsonResult GetReservationDetails(int id)
         {
-            using (Pluto_AspNetMvcEntities dbmodel = new Pluto_AspNetMvcEntities())
+            using (ReservationEntities dbmodel = new ReservationEntities())
             {
-                var data = dbmodel.Courses.Where(x => x.Id == id).Select(x => new
+                var data = dbmodel.ReservationForTables.Where(x => x.Id == id).Select(x => new
                 {
-                    x.Description,
-                    x.FullPrice,
-                    x.Id,
-                    x.Level,
-                    x.Name,
-                    x.AuthorId
+                    x.Total_Person,
+                    x.Total_Table_Number,
+                    x.StartDate,
+                    x.EndDate
                 }).FirstOrDefault();
                 return Json(data, JsonRequestBehavior.AllowGet);
             }
         }
 
         [HttpPost]
-        public ActionResult Create(Course courses)
+        public ActionResult ReserveTable(ReservationForTable reservation)
         {
             try
             {
                 // TODO: Add insert logic here
-                using (Pluto_AspNetMvcEntities dbmodel = new Pluto_AspNetMvcEntities())
+                using (ReservationEntities dbmodel = new ReservationEntities())
                 {
-                    dbmodel.Courses.Add(courses);
+                    dbmodel.ReservationForTables.Add(reservation);
                     dbmodel.SaveChanges();
                 }
 
@@ -93,21 +90,21 @@ namespace CrudApp.Controllers
         }
 
         // GET: Home/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult EditReservedTable(int id)
         {
-            using (Pluto_AspNetMvcEntities dbmodel = new Pluto_AspNetMvcEntities())
+            using (ReservationEntities dbmodel = new ReservationEntities())
 
-                return View(dbmodel.Courses.Where(x => x.Id == id).FirstOrDefault());
+                return View(dbmodel.ReservationForTables.Where(x => x.Id == id).FirstOrDefault());
         }
 
         // POST: Home/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, Course courses)
+        public ActionResult EditReservedTable(int id, ReservationForTable courses)
         {
             try
             {
                 // TODO: Add update logic here
-                using (Pluto_AspNetMvcEntities dbmodel = new Pluto_AspNetMvcEntities())
+                using (ReservationEntities dbmodel = new ReservationEntities())
                 {
                     dbmodel.Entry(courses).State = EntityState.Modified;
                     dbmodel.SaveChanges();
@@ -119,45 +116,6 @@ namespace CrudApp.Controllers
             {
                 return View();
             }
-        }
-
-        // GET: Home/Delete/5
-        public ActionResult Delete(int id)
-        {
-            using (Pluto_AspNetMvcEntities dbmodel = new Pluto_AspNetMvcEntities())
-                return View(dbmodel.Courses.Where(x => x.Id == id).FirstOrDefault());
-        }
-
-        // POST: Home/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-                using (Pluto_AspNetMvcEntities dbmodel = new Pluto_AspNetMvcEntities())
-                {
-                    Course course = dbmodel.Courses.Where(x => x.Id == id).FirstOrDefault();
-                    dbmodel.Courses.Remove(course);
-                    dbmodel.SaveChanges();
-                }
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        public ActionResult Register()
-        {
-            return View();
-        }
-
-        public ActionResult Login()
-        {
-            return View();
         }
     }
 }

@@ -7,16 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CrudApp.Models
+namespace CrudApp
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Pluto_AspNetMvcEntities : DbContext
+    public partial class ReservationEntities : DbContext
     {
-        public Pluto_AspNetMvcEntities()
-            : base("name=Pluto_AspNetMvcEntities")
+        public ReservationEntities()
+            : base("name=ReservationEntities")
         {
         }
     
@@ -25,10 +25,6 @@ namespace CrudApp.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
-        public virtual DbSet<Author> Authors { get; set; }
-        public virtual DbSet<Course> Courses { get; set; }
-        public virtual DbSet<Cover> Covers { get; set; }
-        public virtual DbSet<Tag> Tags { get; set; }
+        public virtual DbSet<ReservationForTable> ReservationForTables { get; set; }
     }
 }

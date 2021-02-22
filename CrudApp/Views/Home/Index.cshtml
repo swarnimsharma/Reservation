@@ -1,39 +1,17 @@
-﻿@model IEnumerable<CrudApp.Models.Course>
+﻿@model IEnumerable<CrudApp.ReservationForTable>
 @{
     ViewBag.Title = "Index";
 }
-<script src="~/CoursesScript/Courses.js"></script>
-<script src="~/CoursesScript/BootBox.min.js"></script>
+<script src="~/ReservationsScript/Reservation.js"></script>
+<script src="~/ReservationsScript/BootBox.min.js"></script>
 <script>
     $(function () {
-        Courses.GetCourseData();
+        Reservations.GetReservationData();
     });
 </script>
 <div id="courseDiv">
 </div>
-<script>
 
-    $(document).ready(function () {
-        var array = ['2', '1'];
-        $('#sports').select2({
-            data: array
-       
-        });
-</script>
-<select id="sports">
-    <option value="JAN">January</option>
-        <option value="FEB">February</option>
-        <option value="MAR">March</option>
-        <option value="APR">April</option>
-        <option value="MAY">May</option>
-        <option value="JUN">June</option>
-        <option value="JUL">July</option>
-        <option value="AUG">August</option>
-        <option value="SEP">September</option>
-        <option value="OCT">October</option>
-        <option value="NOV">November</option>
-        <option value="DEC">December</option>
-</select>
 <div id="myModal" class="modal fade" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -85,7 +63,7 @@
             <div class="modal-footer">
                 <span class="error"></span>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                <button id="sub" type="button" class="btn btn-info" onclick="Courses.Save()">Create</button>
+                <button id="sub" type="button" class="btn btn-info" onclick="Reservations.Save()">Reserve Table</button>
             </div>
         </div>
     </div>

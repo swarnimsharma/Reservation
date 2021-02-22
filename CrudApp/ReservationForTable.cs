@@ -7,23 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CrudApp.Models
+namespace CrudApp
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class Tag
+
+    public class ReservationForTable
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Tag()
-        {
-            this.Courses = new HashSet<Course>();
-        }
-    
         public int Id { get; set; }
-        public string Name { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Course> Courses { get; set; }
+        public System.DateTime StartDate { get; set; }
+        public System.DateTime EndDate { get; set; }
+        public string Total_Table_Number { get; set; }
+        public string Total_Person { get; set; }
+        public string Booking_Id { get; set; }
     }
 }

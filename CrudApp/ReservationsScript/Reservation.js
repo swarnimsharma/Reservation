@@ -1,4 +1,4 @@
-﻿var Courses = {
+﻿var Reservations = {
     Reset: function () {
         $("#txtName").val('');
         $("#txtDescription").val('');
@@ -11,11 +11,11 @@
         $("#spnName").text('');
         $("#spnName").hide();
         $("#sub").html('Create');
-        Courses.ToggleTextBox(false);
+        Reservations.ToggleTextBox(false);
     },
     OpenPopUp: function () {
         debugger;
-        Courses.Reset();
+        Reservations.Reset();
         $('#myModal').modal('show');
     },
     Save: function () {
@@ -81,39 +81,12 @@
             },
             complete: function () {
                 $('#myModal').modal('hide');
-                Courses.GetCourseData();
+                Reservations.GetReservationData();
             }
         });
         //$('#myModal').modal('hide');
     },
 
-    LoginParams: function () {
-        //$('input').removeClass('required_fields_border');
-        var required_fields = [];
-        var data = {
-            Id: $('#hidden_course_id').val(),
-            Name: $("#txtName").val(),
-            Description: $("#txtDescription").val(),
-            Level: $("#txtLevel").val(),
-            FullPrice: $("#txtFullPrice").val(),
-            AuthorId: $("#txtAuthorId").val()
-        }
-        if (data.Name == null || data.Name == '') {
-            required_fields.push('txtName');
-        }
-        //if (data.password == null || data.password == '') {
-        //    required_fields.push('login_user_password');
-        //}
-
-        if (required_fields.length > 0) {
-            Account.RequiredValidation(required_fields);
-            $('#Required_fields_message').show();
-        }
-        else {
-            return data;
-        }
-        return null;
-    },
 
     OpenDetailsModal: function (id) {
         $("#sub").hide();
@@ -131,7 +104,7 @@
                 $('#txtAuthorId').val(data.AuthorId);
                 $('#hidden_course_id').val(data.Id);
                 $('#myModal').modal('show');
-                Courses.ToggleTextBox(true);
+                Reservations.ToggleTextBox(true);
                 swal("Here's a message!")
             }
         });
@@ -143,28 +116,7 @@
         $('#txtLevel').prop('readonly', value);
         $('#txtAuthorId').prop('readonly', value);
     },
-    Delete: function (id, Description) {
-        var Import = new Object();
-        Import.id = id;
-        bootbox.confirm({
-            message: "Are you sure want to delete " + Description + "?",
-            callback: function (data) {
-                debugger;
-                if (data) {
-                    $.ajax({
-                        type: 'Post',
-                        url: '/Home/Delete?id=' + id,
-                        contentType: 'application/json',
-                        success: function (data) {
-                            $('#myModal').modal('hide');
-                            alert("Deleted Successfully!");
-                            Courses.GetCourseData();
-                        }
-                    });
-                }
-            },
-        });
-    },
+
 
     OpenEditModal: function (id) {
         $("#myModalLabel").html('Edit');
@@ -182,23 +134,22 @@
                 $('#txtAuthorId').val(data.AuthorId);
                 $('#hidden_course_id').val(data.Id);
                 $('#myModal').modal('show');
-                Courses.ToggleTextBox(false);
+                Reservations.ToggleTextBox(false);
                 swal("Here's the title!", "...and here's the text!");
             }
         });
     },
 
-    GetCourseData: function () {
+    GetReservationData: function () {
         $('#courseDiv').html('');
         $.ajax({
             type: 'Get',
-            url: '/Home/_Courses',
+            url: '/Home/_GetReservationList',
             success: function (data) {
                 debugger;
                 $('#courseDiv').html(data);
             },
             complete: function () {
-                //$('#CoursesTable').DataTable();
             }
         });
     }
