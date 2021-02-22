@@ -30,7 +30,6 @@ namespace CrudApp.Controllers
                 {
                     Log.Error("Error in Home Controller/Index", ex);
                 }
-                var a = dbmodel.ReservationForTables.ToList();
                 return PartialView(dbmodel.ReservationForTables.ToList());
             }
         }
