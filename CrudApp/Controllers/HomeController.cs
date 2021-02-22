@@ -20,7 +20,7 @@ namespace CrudApp.Controllers
 
         public PartialViewResult _GetReservationList()
         {
-            using (ReservationEntities dbmodel = new ReservationEntities())
+            using (ReservationEntities dbmodelForReservation = new ReservationEntities())
             {
                 try
                 {
@@ -30,7 +30,7 @@ namespace CrudApp.Controllers
                 {
                     Log.Error("Error in Home Controller/Index", ex);
                 }
-                return PartialView(dbmodel.ReservationForTables.ToList());
+                return PartialView(dbmodelForReservation.ReservationForTables.ToList());
             }
         }
 
@@ -38,9 +38,9 @@ namespace CrudApp.Controllers
         [HttpGet]
         public JsonResult GetReservationDetails(int id)
         {
-            using (ReservationEntities dbmodel = new ReservationEntities())
+            using (ReservationEntities dbmodelForReservation = new ReservationEntities())
             {
-                var data = dbmodel.ReservationForTables.Where(x => x.Id == id).Select(x => new
+                var data = dbmodelForReservation.ReservationForTables.Where(x => x.Id == id).Select(x => new
                 {
                     x.Total_Person,
                     x.Total_Table_Number,
@@ -53,15 +53,15 @@ namespace CrudApp.Controllers
         }
 
         [HttpPost]
-        public ActionResult ReserveTable(ReservationForTable reservation)
+        public ActionResult ReserveTable(ReservationForTable reserveTable)
         {
             try
             {
 
-                using (ReservationEntities dbmodel = new ReservationEntities())
+                using (ReservationEntities dbmodelForReservation = new ReservationEntities())
                 {
-                    dbmodel.ReservationForTables.Add(reservation);
-                    dbmodel.SaveChanges();
+                    dbmodelForReservation.ReservationForTables.Add(reserveTable);
+                    dbmodelForReservation.SaveChanges();
                 }
 
                 return RedirectToAction("Index");
@@ -92,21 +92,21 @@ namespace CrudApp.Controllers
 
         public ActionResult EditReservedTable(int id)
         {
-            using (ReservationEntities dbmodel = new ReservationEntities())
-                return View(dbmodel.ReservationForTables.Where(x => x.Id == id).FirstOrDefault());
+            using (ReservationEntities dbmodelForReservation = new ReservationEntities())
+                return View(dbmodelForReservation.ReservationForTables.Where(x => x.Id == id).FirstOrDefault());
         }
 
 
         [HttpPost]
-        public ActionResult EditReservedTable(int id, ReservationForTable reservation)
+        public ActionResult EditReservedTable(int id, ReservationForTable editReservedTable)
         {
             try
             {
 
-                using (ReservationEntities dbmodel = new ReservationEntities())
+                using (ReservationEntities dbmodelForReservation = new ReservationEntities())
                 {
-                    dbmodel.Entry(reservation).State = EntityState.Modified;
-                    dbmodel.SaveChanges();
+                    dbmodelForReservation.Entry(editReservedTable).State = EntityState.Modified;
+                    dbmodelForReservation.SaveChanges();
                 }
 
                 return RedirectToAction("Index");
