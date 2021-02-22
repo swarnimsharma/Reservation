@@ -45,7 +45,6 @@
                 Reservations.GetReservationData();
             }
         });
-        //$('#myModal').modal('hide');
     },
 
 
@@ -55,7 +54,6 @@
         $.ajax({
             type: 'GET',
             url: '/Home/GetReservationDetails?id=' + id,
-            // data: obj,
             success: function (data) {
                 debugger;
                 var startDate = new Date(parseInt(data.StartDate.substr(6)));
