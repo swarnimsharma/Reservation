@@ -1,0 +1,3 @@
+2020-02-21 14:28:40,410 [10] INFO  CrudApp.Controllers.HomeController - Hi I am log4net Info Level
+2020-02-21 14:30:58,103 [10] INFO  CrudApp.Controllers.HomeController - Hi I am log4net Info Level
+2020-02-21 14:31:32,842 [14] INFO  CrudApp.Controllers.HomeController - Hi I am log4net Info Level

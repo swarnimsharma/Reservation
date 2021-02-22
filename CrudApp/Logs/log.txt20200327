@@ -1,0 +1,12 @@
+2020-03-27 09:36:44,818 [9] INFO  CrudApp.Controllers.HomeController - Hi I am log4net Info Level
+2020-03-27 10:10:35,858 [11] INFO  CrudApp.Controllers.HomeController - Hi I am log4net Info Level
+2020-03-27 10:10:36,408 [36] INFO  CrudApp.Controllers.HomeController - Hi I am log4net Info Level
+2020-03-27 10:10:36,575 [14] INFO  CrudApp.Controllers.HomeController - Hi I am log4net Info Level
+2020-03-27 10:12:29,114 [8] INFO  CrudApp.Controllers.HomeController - Hi I am log4net Info Level
+2020-03-27 10:42:28,911 [5] INFO  CrudApp.Controllers.HomeController - Hi I am log4net Info Level
+2020-03-27 10:44:23,659 [5] INFO  CrudApp.Controllers.HomeController - Hi I am log4net Info Level
+2020-03-27 10:44:31,372 [5] INFO  CrudApp.Controllers.HomeController - Hi I am log4net Info Level
+2020-03-27 10:44:41,641 [5] INFO  CrudApp.Controllers.HomeController - Hi I am log4net Info Level
+2020-03-27 15:42:31,398 [6] INFO  CrudApp.Controllers.HomeController - Hi I am log4net Info Level
+2020-03-27 15:49:07,790 [6] INFO  CrudApp.Controllers.HomeController - Hi I am log4net Info Level
+2020-03-27 15:52:13,260 [6] INFO  CrudApp.Controllers.HomeController - Hi I am log4net Info Level
